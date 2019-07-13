@@ -15,9 +15,19 @@
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-# Inherit device configuration
-$(call inherit-product, device/samsung/s3ve3g/full_s3ve3g.mk)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit from s3ve3g device
+$(call inherit-product, device/samsung/s3ve3g/device.mk)
 
 # Release name
+
+
+# Device identifier. This must come after all inclusions
+PRODUCT_NAME := aosp_s3ve3g
+PRODUCT_DEVICE := s3ve3g
+PRODUCT_BRAND := samsung
+PRODUCT_MODEL := GT-I9301I
 PRODUCT_RELEASE_NAME := GT-I9301I
-PRODUCT_NAME := lineage_s3ve3g
+PRODUCT_MANUFACTURER := samsung
